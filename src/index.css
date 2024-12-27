@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+
+    .slider{
+        @apply grid;
+        grid-template-areas: "slide";
+        max-width: 1460px;
+    }
+
+    .slider-childs{
+        @apply before:absolute before:inset-0 before:bg-gradient-to-b from-transparent to-black;
+        grid-area: slide;
+        transition: .01s clip-path .6s;
+        clip-path: polygon(50% 0, 50% 0, 50% 100%, 50% 100%);
+    }
+
+    [data-active]{
+        order: 1;
+        transition: .6s clip-path;
+        clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+    }
+
+    .slider-prev{
+        grid-area: slide;
+        @apply z-[100] self-center justify-self-start;
+    }
+
+    .slider-next{
+        grid-area: slide;
+        @apply z-[100] self-center justify-self-end;
+    }
+
+}
+.search-bar {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .search-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .loading {
+    font-size: 14px;
+    color: #999;
+    margin-top: 5px;
+  }
+  
+  .suggestions-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0;
+  }
+  
+  .suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .suggestion-item:hover {
+    background: #f0f0f0;
+  }
+  
